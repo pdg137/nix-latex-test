@@ -4,17 +4,19 @@ let
 
   # Otherwise, use nixos-24.05 from 2024-09-29:
   nixpkgs = fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/fbca5e7.tar.gz";
-    sha256 = "07wa6y7q4ql0x1jj08dignak2lra003inf2cxl4xxvyqdsspshp3";
+    url = "https://github.com/NixOS/nixpkgs/archive/7c815e5.tar.gz";
+    sha256 = "0nysdk5i3arc88k5ibx3rgl0ihd7km52hr61l8qx280nf7sjf6zm";
   };
 
   pkgs = (import nixpkgs {});
 
-  tex = (pkgs.texlive.combine {
-    inherit (pkgs.texlive) scheme-medium
-      wrapfig amsmath ulem hyperref capt-of
-      setspace;
-  });
+  tex = pkgs.texliveMedium.withPackages
+    ( ps: with ps;
+      [
+        wrapfig amsmath ulem hyperref capt-of
+        setspace tkz-euclide
+        stackengine tabstackengine xcolor
+      ]);
 
 in
   pkgs.stdenvNoCC.mkDerivation {

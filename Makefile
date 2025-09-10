@@ -5,7 +5,7 @@ clean:
 
 output/%.pdf: %.tex
 	mkdir -p output
-	./shell pdflatex -output-directory=output $<
+	pdflatex -output-directory=output $<
 
 shell: default.nix
 	nix-build -o shell

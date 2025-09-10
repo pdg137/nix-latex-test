@@ -1,7 +1,7 @@
 This is a demo of how to use [Nix](https://nixos.org/) to start
 writing documents in LaTeX.
 
-1. Install Nix or NixOS.
+1. [Install Nix or NixOS](https://nixos.org/download/). (On Debian/Ubuntu systems I prefer to to `apt install nix-bin`.)
 2. Clone this repository.
 3. Run "nix-build -o shell" to install a basic LaTeX environment (it
    will take a while to download/build everything).

@@ -1,5 +1,7 @@
 \documentclass[12pt]{article}
 
+\usepackage{tkz-euclide}
+
 \begin{document}
 
 \title{Homework 1}
@@ -15,5 +17,32 @@ $$\int_{-\infty}^\infty e^{-x^2} dx = \sqrt{\pi}$$
 \section*{Problem 2}
 
 You can also do inline math like $\int x\,dx$.
+
+\noindent Here is a diagram:
+
+\begin{tikzpicture}[scale=1]
+\tkzDefPoint(0,0){O}
+\tkzDefPoint(2.5,0){N}
+\tkzDefPoint(-4.2,0.5){M}
+\tkzDefPointBy[rotation=center O angle 30](N)
+\tkzGetPoint{B}
+\tkzDefPointBy[rotation=center O angle -50](N)
+\tkzGetPoint{A}
+\tkzInterLC[common=B](M,B)(O,B) \tkzGetFirstPoint{C}
+\tkzInterLC[common=A](M,A)(O,A) \tkzGetFirstPoint{A'}
+\tkzMarkAngle[mkpos=.2, size=0.5](A,C,B)
+\tkzMarkAngle[mkpos=.2, size=0.5](A,M,C)
+\tkzDrawSegments(A,C M,A M,B A,B)
+\tkzDrawCircle(O,N)
+\tkzLabelCircle[above left](O,N)(120){%
+$\mathcal{C}$}
+\begin{scope}[veclen]
+\tkzMarkAngle[mkpos=.2, size=1.2](C,A,M)
+\end{scope}
+\tkzDrawPoints(O, A, B, M, B, C)
+\tkzLabelPoints[right](O,A,B)
+\tkzLabelPoints[above left](M,C)
+\tkzLabelPoint[below left](A'){$A'$}
+\end{tikzpicture}
 
 \end{document}
