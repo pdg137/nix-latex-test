@@ -2,7 +2,7 @@ let
   # Change to this if you want to use your configured channel
   #  nixpkgs = <nixpkgs>;
 
-  # Otherwise, use nixos-24.05 from 2024-09-29:
+  # Otherwise, use nixos-25.05 from Sept 2025:
   nixpkgs = fetchTarball {
     url = "https://github.com/NixOS/nixpkgs/archive/7c815e5.tar.gz";
     sha256 = "0nysdk5i3arc88k5ibx3rgl0ihd7km52hr61l8qx280nf7sjf6zm";
@@ -13,9 +13,12 @@ let
   tex = pkgs.texliveMedium.withPackages
     ( ps: with ps;
       [
+        # Customize packages you want to include here.
+        # You can search for them at
+        #   https://search.nixos.org/packages
         wrapfig amsmath ulem hyperref capt-of
         setspace tkz-euclide
-        stackengine tabstackengine xcolor
+        stackengine tabstackengine
       ]);
 
 in
